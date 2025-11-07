@@ -1,4 +1,4 @@
 package com.pluralsight.data;
 
-public class ReceiptManager {
+public class ReceiptWriter {
 }
