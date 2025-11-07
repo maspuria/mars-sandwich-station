@@ -73,7 +73,13 @@ public class Sandwich {
     public String getSummary() {
         return "\n========== Sandwich Summary ========== " +
                 "\n Size: " + sandwichSize +
-                "\n"
+                "\n Bread: " + breadType +
+                "\n Toasted: " + isToasted +
+                "\n Meats: " + meats +
+                "\n Cheeses: " + cheeses +
+                "\n Toppings: " + toppings +
+                "\n Sauces: " + sauces +
+                "\n Price: $" + totalPrice + "\n";
     }
 
 
