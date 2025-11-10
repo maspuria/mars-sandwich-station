@@ -66,4 +66,23 @@ public class Order {
 
     // getOrderSummary method:
     //   - return formatted string of all items and total
+    public String getOrderSummary() {
+        String summary = "\n ==== Order Summary ====";
+
+        for (Sandwich sandwich : sandwiches) {
+            summary += sandwich.getSandwichSummary();
+        }
+
+        for (Drink drink : drinks) {
+            summary += "\n Drink: $" + drink.getPrice();
+        }
+
+        for (Chips chip : chips) {
+            summary+="\n Chips: $" + chip.getPrice();
+        }
+
+        summary = summary + "\n TOTAL: $" + getTotal();
+
+        return summary;
+    }
 }
