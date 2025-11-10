@@ -1,9 +1,12 @@
 package com.pluralsight.ui;
 
+import com.pluralsight.model.Order;
+
 import java.util.Scanner;
 
 public class UserInterface {
-// declare a Scanner object for reading input from the console
+    // declare a Scanner object for reading input from the console
+    private Scanner scanner = new Scanner(System.in);
 
     // constructor:
 
@@ -14,6 +17,31 @@ public class UserInterface {
     //       0) Exit
     //   - prompt user for choice
     //   - return user input
+    public void showHomeScreen() {
+        boolean running = true;
+
+        while (running) {
+            System.out.println("===== Welcome to Mars Sandwich Station =====");
+            System.out.println("(1) New Order");
+            System.out.println("(0) Exit");
+            System.out.print("Please enter your choice: ");
+
+            String choice = scanner.nextLine();
+
+            switch (choice) {
+                case "1":
+                    Order order = new Order();
+                    showOrderMenu(order);
+                    break;
+                case "0":
+                    System.out.println("Thank you for using Mars Sandwich Station... Goodbye!");
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Invalid Choice. Please enter 1 to place a new order or 0 to exit application. Please try again.");
+            }
+        }
+    }
 
     // showOrderMenu:
     //   - print:
@@ -24,6 +52,42 @@ public class UserInterface {
     //       0) Cancel Order
     //   - prompt user for choice
     //   - return user input
+    private void showOrderMenu(Order order) {
+        boolean running = true;
+
+        while (running) {
+            System.out.println("\n==== Order Menu ====");
+            System.out.println("(1) Add Sandwich");
+            System.out.println("(2) Add Drink");
+            System.out.println("(3) Add Chips");
+            System.out.println("(4) Checkout");
+            System.out.println("(0) Cancel Order");
+
+            System.out.print("Enter Choice: ");
+            String choice = scanner.nextLine();
+
+            switch (choice) {
+                case "1":
+                    //add sandwich
+                    break;
+                case "2":
+                    // add drink
+                    break;
+                case "3":
+                    // add chips
+                    break;
+                case "4":
+                    // checkout
+                    break;
+                case "0":
+                    System.out.println("Your order is canceled.");
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Invalid choice. Enter 1-4 or 0 to cancel. Please try again.");
+            }
+        }
+    }
 
     // promptForBreadType:
     //   - print list of bread types
