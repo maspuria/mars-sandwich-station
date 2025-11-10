@@ -1,5 +1,6 @@
 package com.pluralsight.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sandwich {
@@ -13,24 +14,27 @@ public class Sandwich {
     private List<String> toppings;
     private List<String> sauces;
     // keep track of total price
-    private double basePrice;
     private double totalPrice;
 
     // constructor: takes bread type, size, toasted
     //   - initialize properties
     //   - set base price based on size
-    public Sandwich(String breadType, int sandwichSize, boolean isToasted,
-                    List<String> meats, List<String> cheeses, List<String> toppings, List<String> sauces,
-                    double basePrice, double totalPrice) {
-        this.breadType = breadType;
-        this.sandwichSize = sandwichSize;
-        this.isToasted = isToasted;
-        this.meats = meats;
-        this.cheeses = cheeses;
-        this.toppings = toppings;
-        this.sauces = sauces;
-        this.basePrice = basePrice;
-        this.totalPrice = totalPrice;
+    public Sandwich() {
+       meats = new ArrayList<>();
+       cheeses = new ArrayList<>();
+       toppings = new ArrayList<>();
+       sauces = new ArrayList<>();
+    }
+
+    // getBasePriceSandwichSize method:
+    public void setBasePriceSandwichSize() {
+        if (sandwichSize == 4) {
+            totalPrice = 5.50;
+        } else if (sandwichSize == 8) {
+            totalPrice = 7.00;
+        } else if (sandwichSize == 12) {
+            totalPrice = 8.50;
+        }
     }
     // addMeat method:
     //   - add meat(s)
@@ -38,14 +42,47 @@ public class Sandwich {
     public void addMeat(String meat, boolean extraMeat) {
         meats.add(meat);
 
+        if (sandwichSize == 4) {
+            if (extraMeat) {
+                totalPrice = totalPrice + 0.50; // extra charge for meat
+            }
+            totalPrice = totalPrice + 1.00;
+        } else if (sandwichSize == 8) {
+            if (extraMeat) {
+                totalPrice = totalPrice + 1.00;
+            }
+            totalPrice = totalPrice + 2.00;
+        } else if (sandwichSize == 12) {
+            if (extraMeat) {
+                totalPrice = totalPrice + 1.50;
+            }
+            totalPrice = totalPrice + 3.00;
+        }
     }
 
     // addCheese method:
     //   - add cheese(s)
     //   - add price depending on size and whether it's extra
-    public void addCheese(String cheese, boolean extra) {
+    public void addCheese(String cheese, boolean extraCheese) {
         cheeses.add(cheese);
+        if (sandwichSize == 4) {
+            if (extraCheese) {
+                totalPrice = totalPrice + 0.30; // extra charge for meat
+            }
+            totalPrice = totalPrice + 0.75;
 
+        } else if (sandwichSize == 8) {
+            if (extraCheese) {
+                totalPrice = totalPrice + 0.60;
+            }
+            totalPrice = totalPrice + 1.50;
+
+        } else if (sandwichSize == 12) {
+            if (extraCheese) {
+                totalPrice = totalPrice + 0.90;
+            }
+            totalPrice = totalPrice + 2.25;
+        }
     }
 
     // addTopping method:
@@ -62,6 +99,19 @@ public class Sandwich {
         sauces.add(sauce);
     }
 
+    //Setters
+    public void setBreadType(String breadType) {
+        this.breadType = breadType;
+    }
+
+    public void setSandwichSize(int sandwichSize) {
+        this.sandwichSize = sandwichSize;
+    }
+
+    public void setToasted(boolean toasted) {
+        this.isToasted = toasted;
+    }
+
     // getPrice method:
     //   - return current total price
     public double getPrice() {
@@ -70,11 +120,19 @@ public class Sandwich {
 
     // getSummary method:
     //   - return a string with all sandwich details and price
-    public String getSummary() {
+    public String getSandwichSummary() {
+
+        String toastedChoice;
+        if (isToasted) {
+            toastedChoice = "Yes";
+        } else {
+            toastedChoice = "No";
+        }
+
         return "\n========== Sandwich Summary ========== " +
                 "\n Size: " + sandwichSize +
                 "\n Bread: " + breadType +
-                "\n Toasted: " + isToasted +
+                "\n Toasted: " + toastedChoice +
                 "\n Meats: " + meats +
                 "\n Cheeses: " + cheeses +
                 "\n Toppings: " + toppings +
