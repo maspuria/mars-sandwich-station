@@ -2,21 +2,23 @@ package com.pluralsight.model;
 
 public class Drink {
     //Field
-   private String size;
+   private String drinkSize;
    private String flavor;
    private double price;
 
    // constructor
-    public Drink() {
-        this.size = size;
+    public Drink(String drinkSize, String flavor) {
+        this.drinkSize = drinkSize;
         this.flavor = flavor;
 
-        if (size.equalsIgnoreCase("small")) {
+        if (this.drinkSize.equalsIgnoreCase("small")) {
             price = 2.00;
-        } else if (size.equalsIgnoreCase("medium")) {
+        } else if (this.drinkSize.equalsIgnoreCase("medium")) {
             price = 2.50;
-        } else if (size.equalsIgnoreCase("large")) {
+        } else if (this.drinkSize.equalsIgnoreCase("large")) {
             price = 3.00;
+        } else {
+            price = 0;
         }
     }
 
@@ -27,7 +29,7 @@ public class Drink {
     @Override
     public String toString() {
         return "\n==== Drink ====" +
-                "\nSize: " + size +
+                "\nSize: " + drinkSize +
                 "\nFlavor: " + flavor +
                 "\nPrice: $" + price;
     }
