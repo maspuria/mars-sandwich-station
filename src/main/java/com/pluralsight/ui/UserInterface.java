@@ -23,8 +23,8 @@ public class UserInterface {
     public void showHomeScreen() {
         boolean running = true;
 
-        while (running) {
-            System.out.println("\n===== Welcome to Mars Sandwich Station =====");
+        while (running) { // 🪐
+            System.out.println("\n===== \uD83E\uDE90 Welcome to Mars Sandwich Station \uD83E\uDE90 =====");
             System.out.println("(1) New Order");
             System.out.println("(0) Exit");
             System.out.println("============================================");
@@ -67,7 +67,6 @@ public class UserInterface {
             System.out.println("(4) Checkout");
             System.out.println("(0) Cancel Order");
             System.out.println("====================");
-
             System.out.print("Enter Choice: ");
             String choice = scanner.nextLine().trim();
 
@@ -129,7 +128,8 @@ public class UserInterface {
         promptForMeats(sandwich);
 
         //prompt user for the cheeses
-        //prompt usr for the sauces
+        //prompt user for toppings
+        //prompt user for the sauces
 
         return sandwich;
     }
@@ -139,12 +139,13 @@ public class UserInterface {
     //   - ask user to type one in (e.g., "white")
     //   - return as user input
     private String promptForBreadType() {
-        System.out.println("Choose Bread Type: ");
-        System.out.println(" - white ");
-        System.out.println(" - wheat ");
-        System.out.println(" - rye ");
-        System.out.println(" - wrap ");
-        System.out.println("Enter your choice of bread: ");
+        System.out.println("==== Choose Bread Type ==== ");
+        System.out.println(" - White ");
+        System.out.println(" - Wheat ");
+        System.out.println(" - Rye ");
+        System.out.println(" - Wrap ");
+        System.out.println("============================");
+        System.out.print("Enter your choice of bread: ");
         return scanner.nextLine().trim();
     }
 
@@ -152,7 +153,7 @@ public class UserInterface {
     //   - ask user: "What size? (4, 8, or 12 inches)"
     //   - return user input
     private int promptForSandwichSize() {
-        System.out.println("What size sandwich would you like?");
+        System.out.println("\nWhat size sandwich would you like?");
         System.out.println("Options: 4, 8, or 12 inches");
         System.out.print("Enter size choice(4, 8, or 12): ");
         return Integer.parseInt(scanner.nextLine().trim());
@@ -162,7 +163,7 @@ public class UserInterface {
     //   - ask: "Would you like it toasted? (yes or no)"
     //   - return user input
     private boolean promptForToasted() {
-        System.out.println("Would you like your sandwich toasted?");
+        System.out.println("\nWould you like your sandwich toasted?");
         System.out.println("Please enter yes or no.");
         System.out.print("Enter toasted choice: ");
         String choice = scanner.nextLine();
@@ -178,7 +179,7 @@ public class UserInterface {
         boolean running = true;
 
         while (running) {
-            System.out.println("\n==== Meat Menu ====");
+            System.out.println("\n====== Meat Menu ======");
             System.out.println(" [1] Steak");
             System.out.println(" [2] Ham");
             System.out.println(" [3] Salami");
@@ -186,7 +187,50 @@ public class UserInterface {
             System.out.println(" [5] Chicken");
             System.out.println(" [6] Bacon");
             System.out.println(" [0] Done Adding Meats");
-            System.out.println(" Enter choice(1-6 or 0): ");
+            System.out.println("=========================");
+            System.out.print(" Enter choice: ");
+
+            String meatChoice = scanner.nextLine().trim();
+            String meat = "";
+
+            switch (meatChoice) {
+                case "1":
+                    meat = "Steak";
+                    break;
+                case "2":
+                    meat = "Ham";
+                    break;
+                case "3":
+                    meat = "Salami";
+                    break;
+                case "4":
+                    meat = "Roast Beef";
+                    break;
+                case "5":
+                    meat = "Chicken";
+                    break;
+                case"6":
+                    meat = "Bacon";
+                    break;
+                case "0":
+                    System.out.println("\nFinished adding meats to your sandwich!");
+                    return;
+                default:
+                    System.out.println("\nInvalid choice. Enter 1-6 or 0 to finish adding your meats. Please, try again.");
+                    continue; // so the user can add more meats if they so desire
+            }
+
+            //       - ask if they want Extra meat? (yes or no)
+            System.out.print("\n Would you like to add Extra of this meat?(yes/no): ");
+            boolean extraMeat = scanner.nextLine().equalsIgnoreCase("yes");
+
+            sandwich.addMeat(meat, extraMeat);
+
+            if (extraMeat) {
+                System.out.println("\nSuccessfully added: " + meat + " (Extra)");
+            } else {
+                System.out.println("\nSuccessfully added: " + meat);
+            }
         }
     }
 
@@ -196,7 +240,7 @@ public class UserInterface {
     public Drink promptForDrink() {
 
         // Drink Size Menu
-        System.out.println("\n ==== Add Drink ====");
+        System.out.println("\n ============== Add Drink ==============");
         System.out.print("Enter size (Small, Medium, or Large): ");
         String drinkSize = scanner.nextLine().trim();
 
@@ -246,18 +290,20 @@ public class UserInterface {
 
     //promptForChipType:
     private Chips promptForChips() {
-        System.out.println("\n ==== Add Chips ====");
+        System.out.println("\n ========== Add Chips ==========");
         System.out.println(" - Potato Chips ");
         System.out.println(" - SunChips Tomato Basil & Cheese ");
         System.out.println(" - Doritos Cool Ranch");
         System.out.println(" - Baked Hot Cheetos ");
         System.out.println(" - Pringles");
+        System.out.println("===================================");
         System.out.print("Enter choice of chips: ");
         String typeOfChip = scanner.nextLine();
         Chips chips = new Chips(typeOfChip);
         return chips;
     }
 
+    //promptForCheese:
     //promptForSauces:
     //promptForSides:
 }
