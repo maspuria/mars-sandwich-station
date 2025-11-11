@@ -137,7 +137,7 @@ public class Sandwich {
                 "\n Cheeses: " + cheeses +
                 "\n Toppings: " + toppings +
                 "\n Sauces: " + sauces +
-                "\n Price: $" + totalPrice + "\n";
+                "\n Price: $" + String.format("%.2f", totalPrice) + "\n";
     }
 
 
