@@ -74,14 +74,15 @@ public class Order {
         }
 
         for (Drink drink : drinks) {
-            summary += "\n Drink: $" + drink.getPrice();
+            summary += "\n Drink: " + drink.getDrinkSize() + " " + drink.getFlavor()+ " $" + String.format("%.2f", drink.getPrice());
         }
 
         for (Chips chip : chips) {
-            summary+="\n Chips: $" + chip.getPrice();
+            summary+="\n Chips: " + chip.getTypeOfChip() + " $" + String.format("%.2f", chip.getPrice());
         }
 
-        summary = summary + "\n TOTAL: $" + getTotal();
+        summary = summary + "\n TOTAL: $" + String.format("%.2f", getTotal());
+        System.out.println("--------------------------");
 
         return summary;
     }
