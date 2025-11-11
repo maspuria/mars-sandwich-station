@@ -38,13 +38,13 @@ public class Order {
     public double getTotal() {
         double total = 0;
 
-        for (Sandwich sandwich: sandwiches)
+        for (Sandwich sandwich : sandwiches)
             total = total + sandwich.getPrice();
 
-        for (Drink drink: drinks)
+        for (Drink drink : drinks)
             total = total + drink.getPrice();
 
-        for(Chips chip: chips)
+        for (Chips chip : chips)
             total = total + chip.getPrice();
 
         return total;
@@ -74,11 +74,11 @@ public class Order {
         }
 
         for (Drink drink : drinks) {
-            summary += "\n Drink: " + drink.getDrinkSize() + " " + drink.getFlavor()+ " $" + String.format("%.2f", drink.getPrice());
+            summary += "\n Drink: " + drink.getDrinkSize() + " " + drink.getFlavor() + " $" + String.format("%.2f", drink.getPrice());
         }
 
         for (Chips chip : chips) {
-            summary+="\n Chips: " + chip.getTypeOfChip() + " $" + String.format("%.2f", chip.getPrice());
+            summary += "\n Chips: " + chip.getTypeOfChip() + " $" + String.format("%.2f", chip.getPrice());
         }
 
         summary = summary + "\n TOTAL: $" + String.format("%.2f", getTotal());
