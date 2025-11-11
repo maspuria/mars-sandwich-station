@@ -26,11 +26,20 @@ public class Drink {
         return price;
     }
 
+    public String getDrinkSize() {
+        return drinkSize;
+    }
+
+    public String getFlavor() {
+        return flavor;
+    }
+
     @Override
     public String toString() {
-        return "\n==== Drink ====" +
+        return "\n------------------------------" +
                 "\nSize: " + drinkSize +
                 "\nFlavor: " + flavor +
-                "\nPrice: $" + price;
+                "\nPrice: $" + String.format("%.2f", price) +
+                "\n------------------------------";
     }
 }

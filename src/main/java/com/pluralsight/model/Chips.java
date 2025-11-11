@@ -15,10 +15,15 @@ public class Chips {
         return price;
     }
 
+    public String getTypeOfChip() {
+        return typeOfChip;
+    }
+
     @Override
     public String toString() {
-        return "\n====Chips===="+
+        return "\n--------------------------------" +
                 "\nChip type: " + typeOfChip +
-                "\nPrice: " + price;
+                "\nPrice: $" + String.format("%.2f", price) +
+                "\n--------------------------------";
     }
 }

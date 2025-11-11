@@ -23,13 +23,13 @@ public class UserInterface {
         boolean running = true;
 
         while (running) {
-            System.out.println("===== Welcome to Mars Sandwich Station =====");
+            System.out.println("\n===== Welcome to Mars Sandwich Station =====");
             System.out.println("(1) New Order");
             System.out.println("(0) Exit");
             System.out.println("============================================");
             System.out.print("Please enter your choice: ");
 
-            String choice = scanner.nextLine();
+            String choice = scanner.nextLine().trim();
 
             switch (choice) {
                 case "1":
@@ -65,9 +65,10 @@ public class UserInterface {
             System.out.println("(3) Add Chips");
             System.out.println("(4) Checkout");
             System.out.println("(0) Cancel Order");
+            System.out.println("====================");
 
             System.out.print("Enter Choice: ");
-            String choice = scanner.nextLine();
+            String choice = scanner.nextLine().trim();
 
             switch (choice) {
                 case "1":
@@ -77,13 +78,13 @@ public class UserInterface {
                     //addDrink
                     Drink drink = promptForDrink();
                     order.addDrink(drink);
-                    System.out.println("Successfully added Drink!");
+                    System.out.println("Successfully added Drink: " + drink.toString());
                     break;
                 case "3":
                     //addChips
                     Chips chips = promptForChips();
                     order.addChips(chips);
-                    System.out.println("Successfully added Chips!");
+                    System.out.println("Successfully added Chips: " + chips.toString());
                     break;
                 case "4":
                     System.out.println(order.getOrderSummary());
@@ -114,7 +115,7 @@ public class UserInterface {
         System.out.println(" - rye ");
         System.out.println(" - wrap ");
         System.out.println("Enter your choice of bread: ");
-        return scanner.nextLine();
+        return scanner.nextLine().trim();
     }
 
     // promptForSandwichSize:
@@ -152,8 +153,8 @@ public class UserInterface {
 
         // Drink Size Menu
         System.out.println("\n ==== Add Drink ====");
-        System.out.print("Enter size (small, medium, or large): ");
-        String drinkSize = scanner.nextLine();
+        System.out.print("Enter size (Small, Medium, or Large): ");
+        String drinkSize = scanner.nextLine().trim();
 
         // Drink Flavor Menu
         String flavor = "";
@@ -167,6 +168,7 @@ public class UserInterface {
             System.out.println(" [4] Unsweetened Iced Tea ");
             System.out.println(" [5] Sweetened Iced Tea ");
             System.out.println(" [6] Water ");
+            System.out.println("=========================");
             System.out.print("Enter choice(1-6): ");
 
             String choice = scanner.nextLine();
