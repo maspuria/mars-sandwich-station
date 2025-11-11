@@ -107,7 +107,9 @@ public class UserInterface {
             }
         }
     }
+
     //promptForSandwich:
+
     private Sandwich promptForSandwich() {
         Sandwich sandwich = new Sandwich();
 
@@ -124,11 +126,14 @@ public class UserInterface {
         sandwich.setToasted(promptForToasted());
 
         //prompt user for the meats
+        promptForMeats(sandwich);
+
         //prompt user for the cheeses
         //prompt usr for the sauces
 
         return sandwich;
     }
+
     // promptForBreadType:
     //   - print list of bread types
     //   - ask user to type one in (e.g., "white")
@@ -169,7 +174,21 @@ public class UserInterface {
     //       - ask user to type of meat (or 'done' to finish)
     //       - ask if they want Extra meat? (yes or no)"
     //   - return list of meats and extras
+    private void promptForMeats(Sandwich sandwich) {
+        boolean running = true;
 
+        while (running) {
+            System.out.println("\n==== Meat Menu ====");
+            System.out.println(" [1] Steak");
+            System.out.println(" [2] Ham");
+            System.out.println(" [3] Salami");
+            System.out.println(" [4] Roast Beef");
+            System.out.println(" [5] Chicken");
+            System.out.println(" [6] Bacon");
+            System.out.println(" [0] Done Adding Meats");
+            System.out.println(" Enter choice(1-6 or 0): ");
+        }
+    }
 
 
     // and so on and so on........
@@ -239,4 +258,6 @@ public class UserInterface {
         return chips;
     }
 
+    //promptForSauces:
+    //promptForSides:
 }
