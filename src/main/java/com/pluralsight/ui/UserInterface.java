@@ -3,12 +3,13 @@ package com.pluralsight.ui;
 import com.pluralsight.model.Chips;
 import com.pluralsight.model.Drink;
 import com.pluralsight.model.Order;
+import com.pluralsight.model.Sandwich;
 
 import java.util.Scanner;
 
 public class UserInterface {
     // declare a Scanner object for reading input from the console
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
     // constructor:
 
@@ -73,6 +74,9 @@ public class UserInterface {
             switch (choice) {
                 case "1":
                     //add sandwich
+                    Sandwich sandwich = promptForSandwich();
+                    order.addSandwich(sandwich);
+                    System.out.println("Successfully added Sandwich: " + sandwich.toString());
                     break;
                 case "2":
                     //addDrink
@@ -103,7 +107,28 @@ public class UserInterface {
             }
         }
     }
+    //promptForSandwich:
+    private Sandwich promptForSandwich() {
+        Sandwich sandwich = new Sandwich();
 
+        System.out.println("\n===== Time to Create Your Sandwich! =====");
+        // Set the bread type and prompt user for bread type
+        sandwich.setBreadType(promptForBreadType());
+
+        // set the sandwich size and prompt user for sandwich size
+        int sandwichSize = promptForSandwichSize();
+        sandwich.setSandwichSize(sandwichSize);
+        sandwich.setBasePriceSandwichSize();
+
+        // prompt user if they want their sandwich toasted
+        sandwich.setToasted(promptForToasted());
+
+        //prompt user for the meats
+        //prompt user for the cheeses
+        //prompt usr for the sauces
+
+        return sandwich;
+    }
     // promptForBreadType:
     //   - print list of bread types
     //   - ask user to type one in (e.g., "white")
@@ -125,7 +150,7 @@ public class UserInterface {
         System.out.println("What size sandwich would you like?");
         System.out.println("Options: 4, 8, or 12 inches");
         System.out.print("Enter size choice(4, 8, or 12): ");
-        return Integer.parseInt(scanner.nextLine());
+        return Integer.parseInt(scanner.nextLine().trim());
     }
 
     // promptForToasted:
@@ -157,8 +182,7 @@ public class UserInterface {
         String drinkSize = scanner.nextLine().trim();
 
         // Drink Flavor Menu
-        String flavor = "";
-        boolean running = true;
+        String flavor;
 
         while(true) {
             System.out.println("\n==== Flavor Menu =====");
@@ -194,10 +218,11 @@ public class UserInterface {
                     break;
                 default:
                     System.out.println("Invalid Choice. Enter a number 1-6 for choice of flavor. Please try again.");
-                    running = false;
+                    continue;
             }
-            return new Drink(drinkSize,flavor);
+            break;
         }
+        return new Drink(drinkSize,flavor);
     }
 
     //promptForChipType:
