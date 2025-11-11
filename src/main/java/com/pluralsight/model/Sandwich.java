@@ -130,7 +130,7 @@ public class Sandwich {
         }
 
         return "\n========== Sandwich Summary ========== " +
-                "\n Size: " + sandwichSize +
+                "\n Size: " + sandwichSize + " inch" +
                 "\n Bread: " + breadType +
                 "\n Toasted: " + toastedChoice +
                 "\n Meats: " + meats +
@@ -140,5 +140,17 @@ public class Sandwich {
                 "\n Price: $" + String.format("%.2f", totalPrice) + "\n";
     }
 
-
+    @Override
+    public String toString() {
+        return "\n--------------------------------------" +
+                "\n Size: " + sandwichSize + " inch" +
+                "\n Bread: " + breadType +
+                "\n Toasted: " + isToasted +
+                "\n Meats: " + meats +
+                "\n Cheeses: " + cheeses +
+                "\n Toppings: " + toppings +
+                "\n Sauces: " + sauces +
+                "\n--------------------------------------" +
+                "\n Price: $" + String.format("%.2f", totalPrice) + "\n";
+    }
 }
