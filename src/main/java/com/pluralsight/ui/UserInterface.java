@@ -128,6 +128,8 @@ public class UserInterface {
         promptForMeats(sandwich);
 
         //prompt user for the cheeses
+        promptForCheeses(sandwich);
+
         //prompt user for toppings
         //prompt user for the sauces
 
@@ -186,7 +188,7 @@ public class UserInterface {
             System.out.println(" [4] Roast Beef");
             System.out.println(" [5] Chicken");
             System.out.println(" [6] Bacon");
-            System.out.println(" [0] Done Adding Meats");
+            System.out.println(" [0] Done Adding Meat");
             System.out.println("=========================");
             System.out.print(" Enter choice: ");
 
@@ -280,7 +282,7 @@ public class UserInterface {
                     flavor = "Water";
                     break;
                 default:
-                    System.out.println("Invalid Choice. Enter a number 1-6 for choice of flavor. Please try again.");
+                    System.out.println("\nInvalid Choice. Enter a number 1-6 for choice of flavor. Please try again.");
                     continue;
             }
             break;
@@ -304,6 +306,54 @@ public class UserInterface {
     }
 
     //promptForCheese:
+    private void promptForCheeses(Sandwich sandwich) {
+        boolean running = true;
+
+        while (running) {
+            System.out.println("\n ==== Cheese Menu ==== ");
+            System.out.println(" [1] American");
+            System.out.println(" [2] Provolone");
+            System.out.println(" [3] Cheddar");
+            System.out.println(" [4] Swiss");
+            System.out.println(" [0] Done Adding Cheese");
+            System.out.println("=========================");
+            System.out.print(" Enter choice: ");
+
+            String cheeseChoice = scanner.nextLine().trim();
+            String cheese = "";
+
+            switch (cheeseChoice) {
+                case "1":
+                    cheese = "American";
+                    break;
+                case "2":
+                    cheese = "Provolone";
+                    break;
+                case "3":
+                    cheese= "Cheddar";
+                    break;
+                case "4":
+                    cheese = "Swiss";
+                    break;
+                case "0":
+                    System.out.println("\nFinished adding cheese to your sandwich!");
+                    return;
+                default:
+                    System.out.println("\nInvalid choice. Enter 1-4 or 0 to finish adding your cheeses. Please, try again.");
+                    continue;
+            }
+            System.out.print("\n Would you like to add Extra of this cheese?(yes/no): ");
+            boolean extraCheese = scanner.nextLine().equalsIgnoreCase("yes");
+
+            sandwich.addCheese(cheese, extraCheese); //adding cheese choices to your sandwich
+
+            if (extraCheese) {
+                System.out.println("\nSuccessfully added: " + cheese + " (Extra)");
+            } else {
+                System.out.println("\nSuccessfully added: " + cheese);
+            }
+        }
+    }
     //promptForSauces:
     //promptForSides:
 }
