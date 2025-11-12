@@ -1,5 +1,6 @@
 package com.pluralsight.ui;
 
+import com.pluralsight.data.ReceiptWriter;
 import com.pluralsight.model.Chips;
 import com.pluralsight.model.Drink;
 import com.pluralsight.model.Order;
@@ -75,7 +76,7 @@ public class UserInterface {
                     //add sandwich
                     Sandwich sandwich = promptForSandwich();
                     order.addSandwich(sandwich);
-                    System.out.println("Successfully added Sandwich: " + sandwich.toString());
+                    System.out.println("Successfully added Sandwich: " + sandwich);
                     break;
                 case "2":
                     //addDrink
@@ -87,14 +88,20 @@ public class UserInterface {
                     //addChips
                     Chips chips = promptForChips();
                     order.addChips(chips);
-                    System.out.println("Successfully added Chips: " + chips.toString());
+                    System.out.println("Successfully added Chips: " + chips);
                     break;
                 case "4": // Checkout Option - confirm or cancel
                     System.out.println(order.getOrderSummary());
-                    // write receipt
-                    // ReceiptWriter.saveReceipt(order);
-                    System.out.println("Checkout Success! Receipt saved.");
-                    System.out.println("\nThank you for ordering at Mars Sandwich Station! Returning to Home Screen Menu...");
+
+                    System.out.println("\nWould you like to confirm your order(yes/no): ");
+                    String confirmOrder = scanner.nextLine().trim();
+
+                    if (confirmOrder.equalsIgnoreCase("yes")) {
+                        ReceiptWriter.saveReceipt(order); //saving your receipt order to new file
+                        System.out.println("\n Your order is complete and receipt is saved! Thank you for ordering at Mars Sandwich Station!!");
+                    } else {
+                        System.out.println("\n Your order is canceled. Returning to Home Screen Menu...");
+                    }
                     running = false;
                     break;
                 case "0":
@@ -170,12 +177,11 @@ public class UserInterface {
     // promptForMeats:
     //   - possible loop (one or multiple meats?):
     //       - ask user to type of meat (or 'done' to finish)
-    //       - ask if they want Extra meat? (yes or no)"
+    //       - ask if they want Extra meat? (yes or no)
     //   - return list of meats and extras
     private void promptForMeats(Sandwich sandwich) {
-        boolean running = true;
 
-        while (running) {
+        while (true) {
             System.out.println("\n====== Meat Menu ======");
             System.out.println(" [1] Steak");
             System.out.println(" [2] Ham");
@@ -188,7 +194,7 @@ public class UserInterface {
             System.out.print(" Enter choice: ");
 
             String meatChoice = scanner.nextLine().trim();
-            String meat = "";
+            String meat;
 
             switch (meatChoice) {
                 case "1":
@@ -299,9 +305,8 @@ public class UserInterface {
 
     //promptForCheese:
     private void promptForCheeses(Sandwich sandwich) {
-        boolean running = true;
 
-        while (running) {
+        while (true) {
             System.out.println("\n ==== Cheese Menu ==== ");
             System.out.println(" [1] American");
             System.out.println(" [2] Provolone");
@@ -312,7 +317,7 @@ public class UserInterface {
             System.out.print(" Enter choice: ");
 
             String cheeseChoice = scanner.nextLine().trim();
-            String cheese = "";
+            String cheese;
 
             switch (cheeseChoice) {
                 case "1":
@@ -349,9 +354,8 @@ public class UserInterface {
 
     //promptForTopping
     private void promptForToppings(Sandwich sandwich) {
-        boolean running = true;
 
-        while (running) {
+        while (true) {
             System.out.println("\n====== Topping Menu (Included) ======");
             System.out.println(" [1] Lettuce ");
             System.out.println(" [2] Peppers");
@@ -367,7 +371,7 @@ public class UserInterface {
             System.out.print(" Enter choice: ");
 
             String toppingChoice = scanner.nextLine().trim();
-            String topping = "";
+            String topping;
 
             switch (toppingChoice) {
                 case "1":
@@ -405,8 +409,7 @@ public class UserInterface {
 
     //promptForSauces:
     private void promptForSauces(Sandwich sandwich) {
-        boolean running = true;
-        while (running) {
+        while (true) {
             System.out.println("\n====== Sauce Menu (Included) ======");
             System.out.println(" [1] Mayo ");
             System.out.println(" [2] Mustard");
