@@ -89,7 +89,7 @@ public class UserInterface {
                     order.addChips(chips);
                     System.out.println("Successfully added Chips: " + chips.toString());
                     break;
-                case "4":
+                case "4": // Checkout Option - confirm or cancel
                     System.out.println(order.getOrderSummary());
                     // write receipt
                     // ReceiptWriter.saveReceipt(order);
@@ -108,7 +108,6 @@ public class UserInterface {
     }
 
     //promptForSandwich:
-
     private Sandwich promptForSandwich() {
         Sandwich sandwich = new Sandwich();
 
@@ -124,13 +123,9 @@ public class UserInterface {
         // prompt user if they want their sandwich toasted
         sandwich.setToasted(promptForToasted());
 
-        //prompt user for the meats
-        promptForMeats(sandwich);
-
-        //prompt user for the cheeses
-        promptForCheeses(sandwich);
-
-        //prompt user for toppings
+        promptForMeats(sandwich); //prompt user for the meats
+        promptForCheeses(sandwich); //prompt user for the cheeses
+        promptForToppings(sandwich);  //prompt user for toppings
         //prompt user for the sauces
 
         return sandwich;
@@ -221,13 +216,13 @@ public class UserInterface {
                     System.out.println("\nInvalid choice. Enter 1-6 or 0 to finish adding your meats. Please, try again.");
                     continue; // so the user can add more meats if they so desire
             }
-
             //       - ask if they want Extra meat? (yes or no)
             System.out.print("\n Would you like to add Extra of this meat?(yes/no): ");
             boolean extraMeat = scanner.nextLine().equalsIgnoreCase("yes");
 
             sandwich.addMeat(meat, extraMeat);
 
+            // confirmation message to user on what meats and extra meats they chose
             if (extraMeat) {
                 System.out.println("\nSuccessfully added: " + meat + " (Extra)");
             } else {
@@ -354,6 +349,7 @@ public class UserInterface {
             }
         }
     }
+
     //promptForTopping
     private void promptForToppings(Sandwich sandwich) {
         boolean running = true;
@@ -398,15 +394,67 @@ public class UserInterface {
                     topping = "Pickles";
                     break;
                 case "0":
-                    System.out.println("\nFinished adding meats to your sandwich!");
+                    System.out.println("\nFinished adding toppings to your sandwich!");
                     return;
                 default:
-                    System.out.println("\nInvalid choice. Enter 1-6 or 0 to finish adding your toppings. Please, try again.");
+                    System.out.println("\nInvalid choice. Enter 1-7 or 0 to finish adding your toppings. Please, try again.");
                     continue; // so the user can add more toppings if they so desire
             }
             sandwich.addTopping(topping);
+
+            System.out.println("\n Successfully added toppings: " + topping);
         }
     }
+
     //promptForSauces:
-    //promptForSides:
+    private void promptForSauces(Sandwich sandwich) {
+        boolean running = true;
+        while (running) {
+            System.out.println("\n====== Sauce Menu (Included) ======");
+            System.out.println(" [1] Mayo ");
+            System.out.println(" [2] Mustard");
+            System.out.println(" [3] Ketchup");
+            System.out.println(" [4] Ranch");
+            System.out.println(" [5] Thousand Island");
+            System.out.println(" [6] Vinaigrette");
+            System.out.println(" [7] Cup of Au Jus");
+            System.out.println(" [0] Done Adding Sauces");
+            System.out.println("======================================");
+            System.out.print(" Enter choice: ");
+
+            String sauceChoice = scanner.nextLine().trim();
+            String sauce = "";
+
+            switch (sauceChoice) {
+                case "1":
+                    sauce = "Mayo";
+                    break;
+                case "2":
+                    sauce = "Mustard";
+                    break;
+                case "3":
+                    sauce = "Ketchup";
+                    break;
+                case "4":
+                    sauce = "Ranch";
+                    break;
+                case "5":
+                    sauce = "Thousand Island";
+                case "6":
+                    sauce = "Vinaigrette";
+                    break;
+                case "7":
+                    sauce = "Cup of Au Jus";
+                    break;
+                case "0":
+                    System.out.println("\nFinished adding sauces to your sandwich!");
+                    return;
+                default:
+                    System.out.println("\nInvalid choice. Enter 1-6 or 0 to finish adding your sauces. Please, try again.");
+                    continue; // so the user can add more sauces if they so desire
+            }
+            sandwich.addSauce(sauce);
+            System.out.println("\nSuccessfully added: " + sauce); // confirmation
+        }
+    }
 }
