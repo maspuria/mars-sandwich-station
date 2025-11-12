@@ -211,7 +211,7 @@ public class UserInterface {
                 case "5":
                     meat = "Chicken";
                     break;
-                case"6":
+                case "6":
                     meat = "Bacon";
                     break;
                 case "0":
@@ -249,7 +249,7 @@ public class UserInterface {
         // Drink Flavor Menu
         String flavor;
 
-        while(true) {
+        while (true) {
             System.out.println("\n==== Flavor Menu =====");
             System.out.println(" [1] Coke ");
             System.out.println(" [2] Sprite ");
@@ -287,7 +287,7 @@ public class UserInterface {
             }
             break;
         }
-        return new Drink(drinkSize,flavor);
+        return new Drink(drinkSize, flavor);
     }
 
     //promptForChipType:
@@ -330,7 +330,7 @@ public class UserInterface {
                     cheese = "Provolone";
                     break;
                 case "3":
-                    cheese= "Cheddar";
+                    cheese = "Cheddar";
                     break;
                 case "4":
                     cheese = "Swiss";
@@ -352,6 +352,59 @@ public class UserInterface {
             } else {
                 System.out.println("\nSuccessfully added: " + cheese);
             }
+        }
+    }
+    //promptForTopping
+    private void promptForToppings(Sandwich sandwich) {
+        boolean running = true;
+
+        while (running) {
+            System.out.println("\n====== Topping Menu (Included) ======");
+            System.out.println(" [1] Lettuce ");
+            System.out.println(" [2] Peppers");
+            System.out.println(" [3] Onions");
+            System.out.println(" [4] Tomatoes");
+            System.out.println(" [5] Jalapeños");
+            System.out.println(" [6] Cucumbers");
+            System.out.println(" [7] Pickles");
+            System.out.println(" [8] Guacamole");
+            System.out.println(" [9] Mushrooms");
+            System.out.println(" [0] Done Adding Toppings");
+            System.out.println("======================================");
+            System.out.print(" Enter choice: ");
+
+            String toppingChoice = scanner.nextLine().trim();
+            String topping = "";
+
+            switch (toppingChoice) {
+                case "1":
+                    topping = "Lettuce";
+                    break;
+                case "2":
+                    topping = "Peppers";
+                    break;
+                case "3":
+                    topping = "Onions";
+                    break;
+                case "4":
+                    topping = "Tomatoes";
+                    break;
+                case "5":
+                    topping = "Jalapeños";
+                case "6":
+                    topping = "Cucumbers";
+                    break;
+                case "7":
+                    topping = "Pickles";
+                    break;
+                case "0":
+                    System.out.println("\nFinished adding meats to your sandwich!");
+                    return;
+                default:
+                    System.out.println("\nInvalid choice. Enter 1-6 or 0 to finish adding your toppings. Please, try again.");
+                    continue; // so the user can add more toppings if they so desire
+            }
+            sandwich.addTopping(topping);
         }
     }
     //promptForSauces:
