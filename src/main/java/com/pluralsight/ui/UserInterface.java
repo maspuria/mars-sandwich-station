@@ -125,8 +125,8 @@ public class UserInterface {
 
         promptForMeats(sandwich); //prompt user for the meats
         promptForCheeses(sandwich); //prompt user for the cheeses
-        promptForToppings(sandwich);  //prompt user for toppings
-        //prompt user for the sauces
+        promptForToppings(sandwich); //prompt user for toppings
+        promptForSauces(sandwich); //prompt user for the sauces
 
         return sandwich;
     }
@@ -230,9 +230,6 @@ public class UserInterface {
             }
         }
     }
-
-
-    // and so on and so on........
     //promptForDrink
     public Drink promptForDrink() {
 
