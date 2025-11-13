@@ -1,7 +1,7 @@
 package com.pluralsight.model;
 
-public class Drink {
-    //Field
+public class Drink extends OrderItem { // Drink class is child class of OrderItem
+    // Field
    private String drinkSize;
    private String flavor;
    private double price;
@@ -22,16 +22,24 @@ public class Drink {
         }
     }
 
-    public double getPrice() {
-        return price;
-    }
-
     public String getDrinkSize() {
         return drinkSize;
     }
 
     public String getFlavor() {
         return flavor;
+    }
+
+    @Override
+    public double getPrice() {
+        return price;
+    }
+
+    @Override
+    public String getSummary() {
+        return "Drink: " + drinkSize +
+                " " + flavor + " $" +
+                String.format("%.2f",price);
     }
 
     @Override

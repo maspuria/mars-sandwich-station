@@ -1,6 +1,6 @@
 package com.pluralsight.model;
 
-public class Chips {
+public class Chips extends OrderItem { //Chips is child of OrderItem
     //Field
     private String typeOfChip;
     private double price = 1.50;
@@ -11,12 +11,18 @@ public class Chips {
     }
 
     //Getter
+    public String getTypeOfChip() {
+        return typeOfChip;
+    }
+
+    @Override
     public double getPrice() {
         return price;
     }
 
-    public String getTypeOfChip() {
-        return typeOfChip;
+    @Override
+    public String getSummary() {
+        return "Chips: " + typeOfChip + " $" + String.format("%.2f", price);
     }
 
     @Override

@@ -3,7 +3,7 @@ package com.pluralsight.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sandwich {
+public class Sandwich extends OrderItem { //sandwich class is the child of OrderItem
     // Field Members
     private String breadType; // store bread type (white, wheat, rye, wrap)
     private int sandwichSize; // store sandwich size (4" , 8" , or 12")
@@ -114,14 +114,15 @@ public class Sandwich {
 
     // getPrice method:
     //   - return current total price
+    @Override
     public double getPrice() {
         return totalPrice;
     }
 
     // getSummary method:
     //   - return a string with all sandwich details and price
-    public String getSandwichSummary() {
-
+    @Override
+    public String getSummary() {
         String toastedChoice;
         if (isToasted) {
             toastedChoice = "Yes";
@@ -129,28 +130,25 @@ public class Sandwich {
             toastedChoice = "No";
         }
 
-        return "\n========== Sandwich Summary ========== " +
-                "\n Size: " + sandwichSize + " inch" +
-                "\n Bread: " + breadType +
-                "\n Toasted: " + toastedChoice +
-                "\n Meats: " + meats +
-                "\n Cheeses: " + cheeses +
-                "\n Toppings: " + toppings +
-                "\n Sauces: " + sauces +
-                "\n Price: $" + String.format("%.2f", totalPrice) + "\n";
+        return "\n===================== Sandwich Summary ===================== " +
+                "\nToasted: " + toastedChoice +
+                "\nMeats: " + meats +
+                "\nCheeses: " + cheeses +
+                "\nToppings: " + toppings +
+                "\nSauces: " + sauces +
+                "\nPrice: $" + String.format("%.2f", totalPrice);
     }
 
     @Override
     public String toString() {
-        return "\n--------------------------------------" +
-                "\n Size: " + sandwichSize + " inch" +
-                "\n Bread: " + breadType +
+        return "\n------------------------------------------------------------" +
+                "\n Size: " + sandwichSize + " inch" + " Bread: " + breadType +
                 "\n Toasted: " + isToasted +
                 "\n Meats: " + meats +
                 "\n Cheeses: " + cheeses +
                 "\n Toppings: " + toppings +
                 "\n Sauces: " + sauces +
-                "\n--------------------------------------" +
-                "\n Price: $" + String.format("%.2f", totalPrice) + "\n";
+                "\n------------------------------------------------------------" +
+                "\n Price: $" + String.format("%.2f", totalPrice);
     }
 }

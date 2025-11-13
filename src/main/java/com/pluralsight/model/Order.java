@@ -3,86 +3,51 @@ package com.pluralsight.model;
 import java.util.ArrayList;
 
 public class Order {
-    // create List for order items (sandwiches, drinks, and chips)
-    // store total price
-    private ArrayList<Sandwich> sandwiches = new ArrayList<>();
-    private ArrayList<Drink> drinks = new ArrayList<>();
-    private ArrayList<Chips> chips = new ArrayList<>();
-    private double totalPrice;
-
-    // constructor:
-    //   - initialize the class propeties
-
+    private ArrayList<OrderItem> items = new ArrayList<>(); // create List for order items (sandwiches, drinks, and chips)
+    private double totalPrice; // store total price
 
     // addSandwich method:
-    //   - add sandwich to list
     public void addSandwich(Sandwich sandwich) {
-        sandwiches.add(sandwich);
+       items.add(sandwich); //add sandwich to list
     }
 
     // addDrink method:
-    //   - add drink to list
     public void addDrink(Drink drink) {
-        drinks.add(drink);
+        items.add(drink); //add drink to list
     }
 
     // addChips method:
-    //   - add chips to list
     public void addChips(Chips chipsType) {
-        chips.add(chipsType);
-
+        items.add(chipsType); //add chips to list
     }
 
     // getTotal method:
-    //   - return total price of order
     public double getTotal() {
         double total = 0;
-
-        for (Sandwich sandwich : sandwiches)
-            total = total + sandwich.getPrice();
-
-        for (Drink drink : drinks)
-            total = total + drink.getPrice();
-
-        for (Chips chip : chips)
-            total = total + chip.getPrice();
-
-        return total;
-    }
-
-    // getSandwiches, getDrinks, getChips:
-    //   - return the orders items
-    public ArrayList<Sandwich> getSandwiches() {
-        return sandwiches;
-    }
-
-    public ArrayList<Drink> getDrinks() {
-        return drinks;
-    }
-
-    public ArrayList<Chips> getChips() {
-        return chips;
+        for (OrderItem item : items) {
+            total = total + item.getPrice();
+        }
+        return total; // return total price of order
     }
 
     // getOrderSummary method:
     //   - return formatted string of all items and total
     public String getOrderSummary() {
-        String summary = "\n ==== Order Summary ====";
+        String summary = "";
+        summary += "\n*****************************************";
+        summary += "\n         Mars Sandwich Station";
+        summary += "\n-----------------------------------------";
+        summary += "\n               Receipt";
+        summary += "\n-----------------------------------------";
 
-        for (Sandwich sandwich : sandwiches) {
-            summary += sandwich.getSandwichSummary();
+        for (OrderItem item : items) {
+            summary = summary + item.getSummary() + "\n";
         }
-
-        for (Drink drink : drinks) {
-            summary += "\n Drink: " + drink.getDrinkSize() + " " + drink.getFlavor() + " $" + String.format("%.2f", drink.getPrice());
-        }
-
-        for (Chips chip : chips) {
-            summary += "\n Chips: " + chip.getTypeOfChip() + " $" + String.format("%.2f", chip.getPrice());
-        }
-
-        summary = summary + "\n TOTAL: $" + String.format("%.2f", getTotal());
-        System.out.println("--------------------------");
+        summary += "\n-----------------------------------------";
+        summary += "\n TOTAL: $" + String.format("%.2f", getTotal());
+        summary += "\n=========================================";
+        summary += "\n            Enjoy your Meal!";
+        summary += "\n=========================================";
 
         return summary;
     }
