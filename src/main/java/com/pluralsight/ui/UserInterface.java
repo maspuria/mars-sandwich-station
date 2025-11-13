@@ -42,14 +42,6 @@ public class UserInterface {
     }
 
     // showOrderMenu:
-    //   - print:
-    //       1) Add Sandwich
-    //       2) Add Drink
-    //       3) Add Chips
-    //       4) Checkout
-    //       0) Cancel Order
-    //   - prompt user for choice
-    //   - return user input
     public void showOrderMenu(Order order) {
         boolean running = true;
 
@@ -202,13 +194,11 @@ public class UserInterface {
     }
 
     // promptForToasted:
-    //   - ask: "Would you like it toasted? (yes or no)"
-    //   - return user input
     public boolean promptForToasted() {
-        System.out.println("\nWould you like your sandwich toasted? (yes/no)");
+        System.out.println("\nWould you like your sandwich toasted? (yes/no)");//   - ask: "Would you like it toasted? (yes or no)"
         System.out.print("Enter choice: ");
         String choice = scanner.nextLine();
-        return choice.equalsIgnoreCase("yes");
+        return choice.equalsIgnoreCase("yes");//   - return user input
     }
 
     // promptForMeats:
