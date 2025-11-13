@@ -112,7 +112,7 @@ public class UserInterface {
     public Sandwich promptForSandwich() {
         Sandwich sandwich = new Sandwich();
 
-        System.out.println("\n===== Time to Create Your Sandwich! =====");
+        System.out.println("\n    \uD83D\uDE80 Time to Create Your Sandwich! \uD83D\uDE80"); // 🚀
         // Set the bread type and prompt user for bread type
         sandwich.setBreadType(promptForBreadType());
 
@@ -136,12 +136,12 @@ public class UserInterface {
     public String promptForBreadType() {
         String breadType="";
         while (true) {
-            System.out.println("\n ╔═══════ Choose Bread Type ═════╗");
+            System.out.println("\n ╔══════ Bread Type ═════╗");
             System.out.println(" ║  [1] White ");
             System.out.println(" ║  [2] Wheat ");
             System.out.println(" ║  [3] Rye ");
             System.out.println(" ║  [4] Wrap ");
-            System.out.println(" ╚═══════════════════════════════╝");
+            System.out.println(" ╚═══════════════════════╝");
             System.out.print("Enter your choice of bread: ");
 
             String choice = scanner.nextLine().trim();
@@ -169,11 +169,11 @@ public class UserInterface {
     // promptForSandwichSize:
     public int promptForSandwichSize() {
         while (true) {
-            System.out.println("\n ╔═══════ Sandwich Size ═════╗");
-            System.out.println(" ║ - 4 inches ");
-            System.out.println(" ║ - 8 inches ");
-            System.out.println(" ║ - 12 inches ");
-            System.out.println(" ╚═══════════════════════════╝");
+            System.out.println("\n ╔═════ Sandwich Size ════╗");
+            System.out.println(" ║ [4] inches    $5.50");
+            System.out.println(" ║ [8] inches    $7.00");
+            System.out.println(" ║ [12] inches   $8.50");
+            System.out.println(" ╚════════════════════════╝");
             System.out.println("What size would you like?");
             System.out.print("Enter choice(4, 8, or 12): ");
 
@@ -195,10 +195,18 @@ public class UserInterface {
 
     // promptForToasted:
     public boolean promptForToasted() {
-        System.out.println("\nWould you like your sandwich toasted? (yes/no)");//   - ask: "Would you like it toasted? (yes or no)"
-        System.out.print("Enter choice: ");
-        String choice = scanner.nextLine();
-        return choice.equalsIgnoreCase("yes");//   - return user input
+        while(true) {
+            System.out.println("\nWould you like your sandwich toasted? (yes/no)");//   - ask: "Would you like it toasted? (yes or no)"
+            System.out.print("Enter choice: ");
+            String choice = scanner.nextLine();
+            if (choice.equalsIgnoreCase("yes")) {
+                return true; //   - return user input
+            } else if (choice.equalsIgnoreCase("no")) {
+                return false; //   - return user input
+            } else {
+                System.out.println("Invalid choice. Enter yes or no. Please try again.");
+            }
+        }
     }
 
     // promptForMeats:
@@ -264,10 +272,10 @@ public class UserInterface {
         // Drink Size Menu
         String drinkSize;
         while (true) {
-            System.out.println("\n ╔════ Drink Size ═══╗");
-            System.out.println(" ║ [1] Small");
-            System.out.println(" ║ [2] Medium");
-            System.out.println(" ║ [3] Large");
+            System.out.println("\n ╔════ Drink Size ═══╗"); //🥤
+            System.out.println(" ║ [1] Small  $2.00");
+            System.out.println(" ║ [2] Medium $2.50");
+            System.out.println(" ║ [3] Large  $3.00");
             System.out.println(" ╚═══════════════════╝");
             System.out.print("Enter Choice: ");
 
@@ -341,13 +349,13 @@ public class UserInterface {
     //promptForChipType:
     public Chips promptForChips() {
         while(true){
-            System.out.println("\n ╔═══════ Chips Menu ══════════════════╗");
+            System.out.println("\n ╔═══════ Chips Menu ($1.50) ═════════════╗");
             System.out.println(" ║ [1] Potato Chips");
             System.out.println(" ║ [2] SunChips Tomato Basil & Cheese");
             System.out.println(" ║ [3] Doritos Cool Ranch");
             System.out.println(" ║ [4] Baked Hot Cheetos");
             System.out.println(" ║ [5] Pringles");
-            System.out.println(" ╚═════════════════════════════════════╝");
+            System.out.println(" ╚════════════════════════════════════════╝");
             System.out.print("Enter choice of chips: ");
             String choice = scanner.nextLine().trim();
 
