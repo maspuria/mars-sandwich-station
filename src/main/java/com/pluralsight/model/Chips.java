@@ -22,7 +22,7 @@ public class Chips extends OrderItem { //Chips is child of OrderItem
 
     @Override
     public String getSummary() {
-        return "Chips: " + typeOfChip + " $" + String.format("%.2f", price);
+        return "\nChips: " + typeOfChip + " $" + String.format("%.2f", price);
     }
 
     @Override

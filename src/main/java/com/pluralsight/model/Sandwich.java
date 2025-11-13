@@ -131,6 +131,8 @@ public class Sandwich extends OrderItem { //sandwich class is the child of Order
         }
 
         return "\n===================== Sandwich Summary ===================== " +
+                "\nSize: " + sandwichSize + " inch" +
+                "\nBread: " + breadType +
                 "\nToasted: " + toastedChoice +
                 "\nMeats: " + meats +
                 "\nCheeses: " + cheeses +
@@ -142,7 +144,8 @@ public class Sandwich extends OrderItem { //sandwich class is the child of Order
     @Override
     public String toString() {
         return "\n------------------------------------------------------------" +
-                "\n Size: " + sandwichSize + " inch" + " Bread: " + breadType +
+                "\n Size: " + sandwichSize + " inch" +
+                "\nBread: " + breadType +
                 "\n Toasted: " + isToasted +
                 "\n Meats: " + meats +
                 "\n Cheeses: " + cheeses +

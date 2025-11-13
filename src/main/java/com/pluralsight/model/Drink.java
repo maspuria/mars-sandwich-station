@@ -37,7 +37,7 @@ public class Drink extends OrderItem { // Drink class is child class of OrderIte
 
     @Override
     public String getSummary() {
-        return "Drink: " + drinkSize +
+        return "\nDrink: " + drinkSize +
                 " " + flavor + " $" +
                 String.format("%.2f",price);
     }
