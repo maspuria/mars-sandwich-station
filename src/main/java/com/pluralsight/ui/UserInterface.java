@@ -12,8 +12,6 @@ public class UserInterface {
     // declare a Scanner object for reading input from the console
     private final Scanner scanner = new Scanner(System.in);
 
-    // constructor:
-
     // showHomeScreen:
     //   - print app title and welcome message
     //   - print:
@@ -57,7 +55,7 @@ public class UserInterface {
     //       0) Cancel Order
     //   - prompt user for choice
     //   - return user input
-    private void showOrderMenu(Order order) {
+    public void showOrderMenu(Order order) {
         boolean running = true;
 
         while (running) {
@@ -75,20 +73,29 @@ public class UserInterface {
                 case "1":
                     //add sandwich
                     Sandwich sandwich = promptForSandwich();
-                    order.addSandwich(sandwich);
-                    System.out.println("Successfully added Sandwich: " + sandwich);
+                    order.addItem(sandwich);
+                    System.out.println("\n------------------------------------------------------------");
+                    System.out.println("               Successfully added Sandwich!");
+                    System.out.println(sandwich.getSummary());
+                    System.out.println("\n------------------------------------------------------------");
                     break;
                 case "2":
                     //addDrink
                     Drink drink = promptForDrink();
-                    order.addDrink(drink);
-                    System.out.println("Successfully added Drink: " + drink.toString());
+                    order.addItem(drink);
+                    System.out.println("\n------------------------------------------------------------");
+                    System.out.println("               Successfully added Drink!");
+                    System.out.println(drink.getSummary());
+                    System.out.println("\n------------------------------------------------------------");
                     break;
                 case "3":
                     //addChips
                     Chips chips = promptForChips();
-                    order.addChips(chips);
-                    System.out.println("Successfully added Chips: " + chips);
+                    order.addItem(chips);
+                    System.out.println("\n------------------------------------------------------------");
+                    System.out.println("               Successfully added Chips!");
+                    System.out.println(chips.getSummary());
+                    System.out.println("------------------------------------------------------------");
                     break;
                 case "4": // Checkout Option - confirm or cancel
                     System.out.println(order.getOrderSummary());
@@ -115,7 +122,7 @@ public class UserInterface {
     }
 
     //promptForSandwich:
-    private Sandwich promptForSandwich() {
+    public Sandwich promptForSandwich() {
         Sandwich sandwich = new Sandwich();
 
         System.out.println("\n===== Time to Create Your Sandwich! =====");
@@ -142,7 +149,7 @@ public class UserInterface {
     //   - print list of bread types
     //   - ask user to type one in (e.g., "white")
     //   - return as user input
-    private String promptForBreadType() {
+    public String promptForBreadType() {
         System.out.println("==== Choose Bread Type ==== ");
         System.out.println(" - White ");
         System.out.println(" - Wheat ");
@@ -156,17 +163,32 @@ public class UserInterface {
     // promptForSandwichSize:
     //   - ask user: "What size? (4, 8, or 12 inches)"
     //   - return user input
-    private int promptForSandwichSize() {
-        System.out.println("\nWhat size sandwich would you like?");
-        System.out.println("Options: 4, 8, or 12 inches");
-        System.out.print("Enter size choice(4, 8, or 12): ");
-        return Integer.parseInt(scanner.nextLine().trim());
+    public int promptForSandwichSize() {
+        while (true) {
+            System.out.println("\nWhat size sandwich would you like?");
+            System.out.println("Options: 4, 8, or 12 inches");
+            System.out.print("Enter size choice(4, 8, or 12): ");
+
+            String userInput = scanner.nextLine().trim();
+
+            try {
+                int sandwichSize = Integer.parseInt(userInput);
+
+                if (sandwichSize == 4 || sandwichSize == 8 || sandwichSize == 12) {
+                    return sandwichSize;
+                } else {
+                    System.out.println("Invalid choice. Enter 4, 8, or 12. Please try again.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Enter a number: 4, 8, or 12. Please try again.");
+            }
+        }
     }
 
     // promptForToasted:
     //   - ask: "Would you like it toasted? (yes or no)"
     //   - return user input
-    private boolean promptForToasted() {
+    public boolean promptForToasted() {
         System.out.println("\nWould you like your sandwich toasted?");
         System.out.println("Please enter yes or no.");
         System.out.print("Enter toasted choice: ");
@@ -179,7 +201,7 @@ public class UserInterface {
     //       - ask user to type of meat (or 'done' to finish)
     //       - ask if they want Extra meat? (yes or no)
     //   - return list of meats and extras
-    private void promptForMeats(Sandwich sandwich) {
+    public void promptForMeats(Sandwich sandwich) {
 
         while (true) {
             System.out.println("\n====== Meat Menu ======");
@@ -238,12 +260,38 @@ public class UserInterface {
     }
     //promptForDrink
     public Drink promptForDrink() {
-
         // Drink Size Menu
-        System.out.println("\n ============== Add Drink ==============");
-        System.out.print("Enter size (Small, Medium, or Large): ");
-        String drinkSize = scanner.nextLine().trim();
+        String drinkSize;
+        while (true) {
+            System.out.println("\nAdd Drink Size:");
+            System.out.println(" [1] Small");
+            System.out.println(" [2] Medium");
+            System.out.println(" [3] Large");
+            System.out.print("Enter Choice: ");
 
+            String sizeInput = scanner.nextLine().trim();
+
+            try {
+                int choice= Integer.parseInt(sizeInput);
+                switch (choice) {
+                    case 1:
+                        drinkSize = "Small";
+                        break;
+                    case 2:
+                        drinkSize = "Medium";
+                        break;
+                    case 3:
+                        drinkSize = "Large";
+                        break;
+                    default:
+                        System.out.println("Invalid number. Please enter 1, 2, or 3");
+                        continue;
+                }
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid choice. Please enter a number 1, 2, or 3.");
+            }
+        }
         // Drink Flavor Menu
         String flavor;
 
@@ -289,7 +337,7 @@ public class UserInterface {
     }
 
     //promptForChipType:
-    private Chips promptForChips() {
+    public Chips promptForChips() {
         System.out.println("\n ========== Add Chips ==========");
         System.out.println(" - Potato Chips ");
         System.out.println(" - SunChips Tomato Basil & Cheese ");
@@ -304,7 +352,7 @@ public class UserInterface {
     }
 
     //promptForCheese:
-    private void promptForCheeses(Sandwich sandwich) {
+    public void promptForCheeses(Sandwich sandwich) {
 
         while (true) {
             System.out.println("\n ==== Cheese Menu ==== ");
@@ -352,8 +400,8 @@ public class UserInterface {
         }
     }
 
-    //promptForTopping
-    private void promptForToppings(Sandwich sandwich) {
+    //promptForTopping:
+    public void promptForToppings(Sandwich sandwich) {
 
         while (true) {
             System.out.println("\n====== Topping Menu (Included) ======");
@@ -408,7 +456,7 @@ public class UserInterface {
     }
 
     //promptForSauces:
-    private void promptForSauces(Sandwich sandwich) {
+    public void promptForSauces(Sandwich sandwich) {
         while (true) {
             System.out.println("\n====== Sauce Menu (Included) ======");
             System.out.println(" [1] Mayo ");
