@@ -1,0 +1,16 @@
+
+ ==== Order Summary ====
+========== Sandwich Summary ========== 
+ Size: 8 inch
+ Bread: Wheat
+ Toasted: Yes
+ Meats: [Ham, Salami, Bacon]
+ Cheeses: [American]
+ Toppings: [Lettuce, Peppers, Onions, Tomatoes, Cucumbers, Cucumbers, Pickles]
+ Sauces: [Mayo]
+ Price: $15.50
+
+ Drink: Small Lemonade $2.00
+ Chips: Pringles $1.50
+ TOTAL: $19.00
+Total: $19.00

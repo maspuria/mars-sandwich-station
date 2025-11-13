@@ -1,0 +1,32 @@
+
+*************************************************************
+                   Mars Sandwich Station
+-------------------------------------------------------------
+                        Receipt
+-------------------------------------------------------------
+===================== Sandwich Summary ===================== 
+Size: 4 inch
+Bread: Wheat
+Toasted: Yes
+Meats: [Ham, Salami]
+Cheeses: [American]
+Toppings: [Lettuce, Peppers, Onions, Tomatoes]
+Sauces: [Vinaigrette]
+Price: $8.75
+
+===================== Sandwich Summary ===================== 
+Size: 12 inch
+Bread: Wrap
+Toasted: No
+Meats: [Chicken]
+Cheeses: [Cheddar]
+Toppings: [Peppers, Onions, Tomatoes, Cucumbers, Mushrooms]
+Sauces: [Ranch]
+Price: $16.15
+
+-------------------------------------------------------------
+ TOTAL: $24.90
+=============================================================
+                     Enjoy your Meal!
+=============================================================
+Total: $24.90
