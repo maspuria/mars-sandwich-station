@@ -13,12 +13,6 @@ public class UserInterface {
     private final Scanner scanner = new Scanner(System.in);
 
     // showHomeScreen:
-    //   - print app title and welcome message
-    //   - print:
-    //       1) New Order
-    //       0) Exit
-    //   - prompt user for choice
-    //   - return user input
     public void showHomeScreen() {
         boolean running = true;
 
@@ -147,17 +141,7 @@ public class UserInterface {
     }
 
     // promptForBreadType:
-    //   - print list of bread types
-    //   - ask user to type one in (e.g., "white")
-    //   - return as user input
     public String promptForBreadType() {
-//        System.out.println("Choose Bread Type: ");
-//        System.out.println(" - white ");
-//        System.out.println(" - wheat ");
-//        System.out.println(" - rye ");
-//        System.out.println(" - wrap ");
-//        System.out.println("Enter your choice of bread: ");
-//        return scanner.nextLine().trim();
         String breadType="";
         while (true) {
             System.out.println("\n ╔═══════ Choose Bread Type ═════╗");
@@ -191,8 +175,6 @@ public class UserInterface {
     }
 
     // promptForSandwichSize:
-    //   - ask user: "What size? (4, 8, or 12 inches)"
-    //   - return user input
     public int promptForSandwichSize() {
         while (true) {
             System.out.println("\n ╔═══════ Sandwich Size ═════╗");
@@ -230,10 +212,6 @@ public class UserInterface {
     }
 
     // promptForMeats:
-    //   - possible loop (one or multiple meats?):
-    //       - ask user to type of meat (or 'done' to finish)
-    //       - ask if they want Extra meat? (yes or no)
-    //   - return list of meats and extras
     public void promptForMeats(Sandwich sandwich) {
 
         while (true) {
