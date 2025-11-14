@@ -6,11 +6,10 @@ public class Reuben extends Sandwich {
         setBreadType("Rye");
         setSandwichSize(8);
         setToasted(true);
-        setBasePriceSandwichSize();
-
+        addBasePriceSandwichSize();
         addMeat("Roast Beef", false); // substituting for corn beef
         addCheese("Swiss", false);
-        addTopping("Onions");
+        addTopping("Onions"); // sub for sauerkraut
         addSauce("Thousand Island");
     }
 

@@ -591,5 +591,40 @@ public class UserInterface {
             }
             return sigSandwich;
     }
+    public void customizeSignatureSandwich(Sandwich sandwich) {
+        boolean running = true;
 
+        while (running) {
+            System.out.println("\n ╔════ Customize Reuben Sandwich ════╗");
+            System.out.println(" ║  [1] Add More Meats ");
+            System.out.println(" ║  [2] Add More Cheese");
+            System.out.println(" ║  [3] Add More Toppings");
+            System.out.println(" ║  [4] Add More Sauces");
+            System.out.println(" ║  [0] Done Customizing");
+            System.out.println(" ╚═══════════════════════════════════╝");
+            System.out.print(" Enter choice: ");
+
+            String choice = scanner.nextLine().trim();
+            switch(choice) {
+                case "1":
+                    promptForMeats(sandwich);
+                    break;
+                case"2":
+                    promptForCheeses(sandwich);
+                    break;
+                case"3":
+                    promptForToppings(sandwich);
+                    break;
+                case"4":
+                    promptForSauces(sandwich);
+                    break;
+                case"0":
+                    System.out.println("Successfully added customization to your signature sandwich!");
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Invalid entry. Enter 1-4 or 0 to finish customizing sandwich. Please try again.");
+            }
+        }
+    }
 }
