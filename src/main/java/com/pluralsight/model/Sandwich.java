@@ -8,17 +8,28 @@ public class Sandwich extends OrderItem { //sandwich class is the child of Order
     private String breadType; // store bread type (white, wheat, rye, wrap)
     private int sandwichSize; // store sandwich size (4" , 8" , or 12")
     private boolean isToasted; // store if sandwich is toasted
+    // keep track of total price
+    private double totalPrice;
     // store meats, cheeses, toppings, sauces
     private List<String> meats;
     private List<String> cheeses;
     private List<String> toppings;
     private List<String> sauces;
-    // keep track of total price
-    private double totalPrice;
 
     // constructor: takes bread type, size, toasted
     //   - initialize properties
     //   - set base price based on size
+
+//    public Sandwich(String breadType, int sandwichSize, boolean isToasted, double totalPrice) {
+//        this.breadType = breadType;
+//        this.sandwichSize = sandwichSize;
+//        this.isToasted = isToasted;
+//        this.totalPrice = totalPrice;
+//        meats = new ArrayList<>();
+//        cheeses = new ArrayList<>();
+//        toppings = new ArrayList<>();
+//        sauces = new ArrayList<>();
+//    }
     public Sandwich() {
        meats = new ArrayList<>();
        cheeses = new ArrayList<>();
@@ -26,8 +37,8 @@ public class Sandwich extends OrderItem { //sandwich class is the child of Order
        sauces = new ArrayList<>();
     }
 
-    // getBasePriceSandwichSize method:
-    public void setBasePriceSandwichSize() {
+    // addBasePriceSandwichSize method:
+    public void addBasePriceSandwichSize() {
         if (sandwichSize == 4) {
             totalPrice = 5.50;
         } else if (sandwichSize == 8) {

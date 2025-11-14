@@ -1,10 +1,7 @@
 package com.pluralsight.ui;
 
 import com.pluralsight.data.ReceiptWriter;
-import com.pluralsight.model.Chips;
-import com.pluralsight.model.Drink;
-import com.pluralsight.model.Order;
-import com.pluralsight.model.Sandwich;
+import com.pluralsight.model.*;
 
 import java.util.Scanner;
 
@@ -46,13 +43,14 @@ public class UserInterface {
         boolean running = true;
 
         while (running) {
-            System.out.println("\n ╔═══════ Order Menu ═════╗");
+            System.out.println("\n ╔═══════ Order Menu ══════════╗");
             System.out.println(" ║ [1] Add Sandwich");
             System.out.println(" ║ [2] Add Drink");
             System.out.println(" ║ [3] Add Chips");
-            System.out.println(" ║ [4] Checkout");
+            System.out.println(" ║ [4] Add Signature Sandwich");
+            System.out.println(" ║ [5] Checkout");
             System.out.println(" ║ [0] Cancel Order");
-            System.out.println(" ╚════════════════════════╝");
+            System.out.println(" ╚═════════════════════════════╝");
             System.out.print("Enter Choice: ");
             String choice = scanner.nextLine().trim();
 
@@ -84,7 +82,18 @@ public class UserInterface {
                     System.out.println(chips.getSummary());
                     System.out.println("------------------------------------------------------------");
                     break;
-                case "4": // Checkout Option - confirm or cancel
+                case "4":
+                    //add Signature Sandwich
+                    Sandwich reuben = promptForSignatureSandwich();
+                    if (reuben != null) {
+                        order.addItem(reuben);
+                        System.out.println("\n------------------------------------------------------------");
+                        System.out.println("        Successfully added Signature Sandwich!");
+                        System.out.println(reuben.getSummary());
+                        System.out.println("------------------------------------------------------------");
+                    }
+                    break;
+                case "5": // Checkout Option - confirm or cancel
                     System.out.println(order.getOrderSummary());
 
                     System.out.println("\nWould you like to confirm your order(yes/no): ");
@@ -119,7 +128,7 @@ public class UserInterface {
         // set the sandwich size and prompt user for sandwich size
         int sandwichSize = promptForSandwichSize();
         sandwich.setSandwichSize(sandwichSize);
-        sandwich.setBasePriceSandwichSize();
+        sandwich.addBasePriceSandwichSize();
 
         // prompt user if they want their sandwich toasted
         sandwich.setToasted(promptForToasted());
@@ -470,6 +479,7 @@ public class UserInterface {
                     break;
                 case "5":
                     topping = "Jalapeños";
+                    break;
                 case "6":
                     topping = "Cucumbers";
                     break;
@@ -528,6 +538,7 @@ public class UserInterface {
                     break;
                 case "5":
                     sauce = "Thousand Island";
+                     break;
                 case "6":
                     sauce = "Vinaigrette";
                     break;
@@ -545,4 +556,40 @@ public class UserInterface {
             System.out.println("\nSuccessfully added: " + sauce); // confirmation
         }
     }
+    // promptForSignatureSandwich will have signature sandwich menu
+    public Sandwich promptForSignatureSandwich() {
+
+            System.out.println("\n ╔════════════════════════════ Signature Sandwich Of the Day ═══════════════════════════════════╗");
+            System.out.println(" ║  [1] Reuben Signature Sandwich     $10.50");
+            System.out.println(" ║      8 inch, Rye bread, Toasted, Roast Beef,Swiss Cheese, Onions, Thousand Island Sauce");
+            System.out.println(" ║  [0] Cancel");
+            System.out.println(" ╚══════════════════════════════════════════════════════════════════════════════════════════════╝");
+            System.out.print(" Enter choice: ");
+
+            String choice = scanner.nextLine().trim();
+
+            Sandwich sigSandwich = null;
+
+            switch (choice) {
+                case "1":
+                    sigSandwich = new Reuben();
+                    break;
+                case "0":
+                    System.out.println("Going back to Order Menu.");
+                    return null;
+                default:
+                    System.out.println("Invalid choice. Enter 1-2 or 0 to go back to order menu. Please try again.");
+                    return promptForSignatureSandwich();
+            }
+
+            // Once they select a signature sandwich, ask user if they want to customize it
+            System.out.println("Do you want to customize your signature sandwich?(yes/no)");
+            String customizeSandwich = scanner.nextLine().trim();
+
+            if (customizeSandwich.equalsIgnoreCase("yes")) {
+                customizeSignatureSandwich(sigSandwich);
+            }
+            return sigSandwich;
+    }
+
 }
