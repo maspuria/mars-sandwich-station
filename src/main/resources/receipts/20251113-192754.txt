@@ -1,0 +1,39 @@
+
+*************************************************************
+                   Mars Sandwich Station
+-------------------------------------------------------------
+                        Receipt
+-------------------------------------------------------------
+===================== Sandwich Summary ===================== 
+Size: 12 inch
+Bread: Wrap
+Toasted: Yes
+Meats: [Chicken]
+Cheeses: [Cheddar]
+Toppings: [Jalapeños, Cucumbers, Mushrooms]
+Sauces: [Mustard]
+Price: $15.25
+
+Drink: Medium Water $2.50
+
+Drink: Large Sweetened Iced Tea $3.00
+
+Chips: Potato Chips $1.50
+
+=============== Reuben Signature Sandwich ================== 
+===================== Sandwich Summary ===================== 
+Size: 8 inch
+Bread: Rye
+Toasted: Yes
+Meats: [Roast Beef]
+Cheeses: [Swiss]
+Toppings: [Onions]
+Sauces: [Thousand Island, Ketchup]
+Price: $10.50
+
+-------------------------------------------------------------
+ TOTAL: $32.75
+=============================================================
+                     Enjoy your Meal!
+=============================================================
+Total: $32.75
