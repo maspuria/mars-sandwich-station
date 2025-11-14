@@ -1,0 +1,37 @@
+
+*************************************************************
+                   Mars Sandwich Station
+-------------------------------------------------------------
+                        Receipt
+-------------------------------------------------------------
+===================== Sandwich Summary ===================== 
+Size: 12 inch
+Bread: White
+Toasted: Yes
+Meats: [Salami, Roast Beef]
+Cheeses: [Provolone]
+Toppings: [Lettuce, Peppers, Onions]
+Sauces: [Mayo]
+Price: $19.15
+
+Drink: Large Sprite $3.00
+
+Chips: Baked Hot Cheetos $1.50
+
+=============== Reuben Signature Sandwich ================== 
+===================== Sandwich Summary ===================== 
+Size: 8 inch
+Bread: Rye
+Toasted: Yes
+Meats: [Roast Beef, Salami]
+Cheeses: [Swiss]
+Toppings: [Onions]
+Sauces: [Thousand Island]
+Price: $12.50
+
+-------------------------------------------------------------
+ TOTAL: $36.15
+=============================================================
+                     Enjoy your Meal!
+=============================================================
+Total: $36.15
